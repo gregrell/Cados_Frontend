@@ -1,9 +1,12 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
 
 const AdvocatePage = () => {
+    const params = useParams()
+    const username = params.username
   return (
     <div>
-        <h1>Advocate Page</h1>
+        <h1>{username}</h1>
     </div>
   )
 }
