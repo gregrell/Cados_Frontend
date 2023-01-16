@@ -12,20 +12,24 @@ const HomePage = () => {
     }, [])
 
     let getData = async () => {
-        let response = await axios.get('http://127.0.0.1:8000/advocate/')
+        let response = await axios.get('https://cados.up.railway.app/advocates/')
         //console.log(response)
-        setAdvocates(response.data)
+        setAdvocates(response.data.advocates)
     } 
 
   return (
-    <div>
-        <h1>Home Page</h1>
+    <div className='main--container'>
+        <h2>CADOS stuff, building out fking react because why the fk not</h2>
 
-        <div>
+        <div className='advocate__list'>
             {advocates.map((advocate, index) => (
-                <div key={index}>
+                <div className = "advocate__preview__wrapper" key={index}>
+                    <img className = "advocate__preview__image" src={advocate.profile_pic}></img>
                     <strong>{advocate.username}</strong>
-                    <Link to={`/advocate/${advocate.username}`}>View</Link>
+                    <a href={advocate.twitter}>@{advocate.username}</a>
+                    <br></br>
+                    {/* <Link to={`/advocate/${advocate.username}`}>View</Link> */}
+                    <p>{advocate.bio}</p>
                     
                 </div>
             ))}
